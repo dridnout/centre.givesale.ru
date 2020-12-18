@@ -1,0 +1,518 @@
+/*======================================================
+						VARIABLES
+
+$enable-grid-classes:                   true !default
+$form-grid-gutter-width:                10px !default
+
+
+/*======================================================
+						FUNCTIONS
+
+// Ascending
+// Used to evaluate Sass maps like our grid breakpoints.
+@mixin _assert-ascending($map, $map-name)
+	$prev-key: null
+	$prev-num: null
+	@each $key, $num in $map
+		@if $prev-num == null or unit($num) == "%" or unit($prev-num) == "%"
+		// Do nothing
+			@else if not comparable($prev-num, $num)
+			@warn "Potentially invalid value for #$map-name: This map must be in ascending order, but key '#$key' has value #$num whose unit makes it incomparable to #$prev-num, the value of the previous key '#$prev-key' !"
+			@else if $prev-num >= $num
+			@warn "Invalid value for #$map-name: This map must be in ascending order, but key '#$key' has value #$num which isn't greater than #$prev-num, the value of the previous key '#$prev-key' !"
+
+		$prev-key: $key
+		$prev-num: $num
+
+
+
+// Starts at zero
+// Used to ensure the min-width of the lowest breakpoint starts at 0.
+@mixin _assert-starts-at-zero($map, $map-name: "$grid-breakpoints")
+	$values: map-values($map)
+	$first-value: nth($values, 1)
+	@if $first-value != 0
+		@warn "First breakpoint in #$map-name must start at 0, but starts at #$first-value."
+
+
+
+/*======================================================
+						MIXINS
+
+/// Grid system
+//
+// Generate semantic grid columns with these mixins.
+
+@mixin make-container($gutter: $grid-gutter-width)
+	width: 100%
+	padding-right: $gutter / 2
+	padding-left: $gutter / 2
+	margin-right: auto
+	margin-left: auto
+
+
+
+// For each breakpoint, define the maximum width of the container in a media query
+@mixin make-container-max-widths($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints)
+	@each $breakpoint, $container-max-width in $max-widths
+		@include media-breakpoint-up($breakpoint, $breakpoints)
+			max-width: $container-max-width
+
+
+
+
+@mixin make-row($gutter: $grid-gutter-width)
+	display: flex
+	flex-wrap: wrap
+	margin-right: -$gutter / 2
+	margin-left: -$gutter / 2
+
+
+@mixin make-col-ready($gutter: $grid-gutter-width)
+	position: relative
+// Prevent columns from becoming too narrow when at smaller grid tiers by
+// always setting `width: 100%`. This works because we use `flex` values
+// later on to override this initial width.
+	width: 100%
+	padding-right: $gutter / 2
+	padding-left: $gutter / 2
+
+
+@mixin make-col($size, $columns: $grid-columns)
+	flex: 0 0 percentage($size / $columns)
+// Add a `max-width` to ensure content within each column does not blow out
+// the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
+// do not appear to require this.
+	max-width: percentage($size / $columns)
+
+
+@mixin make-col-auto()
+	flex: 0 0 auto
+	width: auto
+	max-width: 100% // Reset earlier grid tiers
+
+
+@mixin make-col-offset($size, $columns: $grid-columns)
+	$num: $size / $columns
+	margin-left: if($num == 0, 0, percentage($num))
+
+
+// Row columns
+//
+// Specify on a parent element(e.g., .row) to force immediate children into NN
+// numberof columns. Supports wrapping to new lines, but does not do a Masonry
+// style grid.
+@mixin row-cols($count)
+	& > *
+		flex: 0 0 100% / $count
+		max-width: 100% / $count
+
+
+/*======================================================
+						Framework grid
+
+
+// Framework grid generation
+//
+// Used only by Bootstrap to generate the correct number of grid classes given
+// any value of `$grid-columns`.
+
+@mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints)
+	// Common properties for all breakpoints
+	%grid-column
+		position: relative
+		width: 100%
+		padding-right: $gutter / 2
+		padding-left: $gutter / 2
+
+
+	@each $breakpoint in map-keys($breakpoints)
+		$infix: breakpoint-infix($breakpoint, $breakpoints)
+
+		// Allow columns to stretch full width below their breakpoints
+		@for $i from 1 through $columns
+			.col#{$infix}-#{$i}
+				@extend %grid-column
+
+		.col#{$infix},
+		.col#{$infix}-auto
+			@extend %grid-column
+
+
+		@include media-breakpoint-up($breakpoint, $breakpoints)
+			// Provide basic `.col-{bp}` classes for equal-width flexbox columns
+			.col#{$infix}
+				flex-basis: 0
+				flex-grow: 1
+				max-width: 100%
+
+
+			@for $i from 1 through $grid-row-columns
+				.row-cols#{$infix}-#{$i}
+					@include row-cols($i)
+
+
+
+			.col#{$infix}-auto
+				@include make-col-auto()
+
+
+			@for $i from 1 through $columns
+				.col#{$infix}-#{$i}
+					@include make-col($i, $columns)
+
+
+			.order#{$infix}-first
+				order: -1
+
+			.order#{$infix}-last
+				order: $columns + 1
+
+			@for $i from 0 through $columns
+				.order#{$infix}-#{$i}
+					order: $i
+
+
+			// `$columns - 1` because offsetting by the width of an entire row isn't possible
+			@for $i from 0 through ($columns - 1)
+				@if not ($infix == "" and $i == 0)
+					.offset#{$infix}-#{$i}
+						@include make-col-offset($i, $columns)
+
+// Breakpoint viewport sizes and media queries.
+//
+// Breakpoints are defined as a map of (name: minimum width), order from small to large:
+//
+//    (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px)
+//
+// The map defined in the `$grid-breakpoints` global variable is used as the `$breakpoints` argument by default.
+
+// Name of the next breakpoint, or null for the last breakpoint.
+//
+//    >> breakpoint-next(sm)
+//    md
+//    >> breakpoint-next(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    md
+//    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl))
+//    md
+@function breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints))
+	$n: index($breakpoint-names, $name)
+	@return if($n != null and $n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null)
+
+
+// Minimum breakpoint width. Null for the smallest (first) breakpoint.
+//
+//    >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    576px
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints)
+	$min: map-get($breakpoints, $name)
+	@return if($min != 0, $min, null)
+
+
+// Maximum breakpoint width. Null for the largest (last) breakpoint.
+// The maximum value is calculated as the minimum of the next one less 0.02px
+// to work around the limitations of `min-` and `max-` prefixes and viewports with fractional widths.
+// See https://www.w3.org/TR/mediaqueries-4/#mq-min-max
+// Uses 0.02px rather than 0.01px to work around a current rounding bug in Safari.
+// See https://bugs.webkit.org/show_bug.cgi?id=178261
+//
+//    >> breakpoint-max(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    767.98px
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints)
+	$next: breakpoint-next($name, $breakpoints)
+	@return if($next, breakpoint-min($next, $breakpoints) - .02, null)
+
+
+// Returns a blank string if smallest breakpoint, otherwise returns the name with a dash in front.
+// Useful for making responsive utilities.
+//
+//    >> breakpoint-infix(xs, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    ""  (Returns a blank string)
+//    >> breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
+//    "-sm"
+@function breakpoint-infix($name, $breakpoints: $grid-breakpoints)
+	@return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}")
+
+
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider.
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints)
+	$min: breakpoint-min($name, $breakpoints)
+	@if $min
+		@media (min-width: $min)
+			@content
+
+	@else
+		@content
+
+
+
+// Media of at most the maximum breakpoint width. No query for the largest breakpoint.
+// Makes the @content apply to the given breakpoint and narrower.
+@mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints)
+	$max: breakpoint-max($name, $breakpoints)
+	@if $max
+		@media (max-width: $max)
+			@content
+
+	@else
+		@content
+
+
+// Media that spans multiple breakpoint widths.
+// Makes the @content apply between the min and max breakpoints
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: $grid-breakpoints)
+	$min: breakpoint-min($lower, $breakpoints)
+	$max: breakpoint-max($upper, $breakpoints)
+
+	@if $min != null and $max != null
+		@media (min-width: $min) and (max-width: $max)
+			@content
+
+	@else if $max == null
+		@include media-breakpoint-up($lower, $breakpoints)
+			@content
+
+	@else if $min == null
+		@include media-breakpoint-down($upper, $breakpoints)
+			@content
+
+
+
+
+// Media between the breakpoint's minimum and maximum widths.
+// No minimum for the smallest breakpoint, and no maximum for the largest one.
+// Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
+@mixin media-breakpoint-only($name, $breakpoints: $grid-breakpoints)
+	$min: breakpoint-min($name, $breakpoints)
+	$max: breakpoint-max($name, $breakpoints)
+
+	@if $min != null and $max != null
+		@media (min-width: $min) and (max-width: $max)
+			@content
+
+	@else if $max == null
+		@include media-breakpoint-up($name, $breakpoints)
+			@content
+
+	@else if $min == null
+		@include media-breakpoint-down($name, $breakpoints)
+			@content
+
+
+
+
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$grid-breakpoints: (xs: 0,sm: 576px,md: 768px,lg: 992px,xl: 1500px)!default
+
+@include _assert-ascending($grid-breakpoints, "$grid-breakpoints")
+@include _assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints")
+
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+//$container-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 1200px)!default
+
+$container-max-widths: (xl: 1500px)!default	
+
+@include _assert-ascending($container-max-widths, "$container-max-widths")
+
+
+// Grid columns
+//
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns: 12 !default
+$grid-gutter-width: 20px !default
+$grid-row-columns: 6 !default
+
+
+// grid css
+
+// Container widths
+//
+// Set the container width, and override it for fixed navbars in media queries.
+
+@if $enable-grid-classes
+	// Single container class with breakpoint max-widths
+	.container
+		@include make-container()
+		@include make-container-max-widths()
+
+
+	// 100% wide container at all breakpoints
+	.container-fluid
+		@include make-container()
+
+	// Responsive containers that are 100% wide until a breakpoint
+	@each $breakpoint, $container-max-width in $container-max-widths
+		.container-#{$breakpoint}
+			@extend .container-fluid
+
+
+		@include media-breakpoint-up($breakpoint, $grid-breakpoints)
+			%responsive-container-#{$breakpoint}
+				max-width: $container-max-width
+
+
+			@each $name, $width in $grid-breakpoints
+				@if ($container-max-width > $width or $breakpoint == $name)
+					.container#{breakpoint-infix($name, $grid-breakpoints)}
+						@extend %responsive-container-#{$breakpoint}
+
+// Row
+//
+// Rows contain your columns.
+
+@if $enable-grid-classes
+	.row
+		@include make-row()
+
+	// Remove the negative margin from default .row, then the horizontal padding
+	// from all immediate children columns (to prevent runaway style inheritance).
+	.no-gutters
+		margin-right: 0
+		margin-left: 0
+
+		> .col,
+		> [class*="col-"]
+			padding-right: 0
+			padding-left: 0
+
+
+
+
+// Columns
+//
+// Common styles for small and large grid columns
+
+@if $enable-grid-classes
+	@include make-grid-columns()
+
+
+// flex util
+
+// stylelint-disable declaration-no-important
+
+// Flex variation
+//
+// Custom styles for additional flex alignment options.
+
+@each $breakpoint in map-keys($grid-breakpoints)
+	@include media-breakpoint-up($breakpoint)
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints)
+
+		.flex#{$infix}-row
+			flex-direction: row !important
+		.flex#{$infix}-column
+			flex-direction: column !important
+		.flex#{$infix}-row-reverse
+			flex-direction: row-reverse !important
+		.flex#{$infix}-column-reverse
+			flex-direction: column-reverse !important
+
+		.flex#{$infix}-wrap
+			flex-wrap: wrap !important
+		.flex#{$infix}-nowrap
+			flex-wrap: nowrap !important
+		.flex#{$infix}-wrap-reverse
+			flex-wrap: wrap-reverse !important
+		.flex#{$infix}-fill
+			flex: 1 1 auto !important
+		.flex#{$infix}-grow-0
+			flex-grow: 0 !important
+		.flex#{$infix}-grow-1
+			flex-grow: 1 !important
+		.flex#{$infix}-shrink-0
+			flex-shrink: 0 !important
+		.flex#{$infix}-shrink-1
+			flex-shrink: 1 !important
+
+		.justify-content#{$infix}-start
+			justify-content: flex-start !important
+		.justify-content#{$infix}-end
+			justify-content: flex-end !important
+		.justify-content#{$infix}-center
+			justify-content: center !important
+		.justify-content#{$infix}-between
+			justify-content: space-between !important
+		.justify-content#{$infix}-around
+			justify-content: space-around !important
+
+		.align-items#{$infix}-start
+			align-items: flex-start !important
+		.align-items#{$infix}-end
+			align-items: flex-end !important
+		.align-items#{$infix}-center
+			align-items: center !important
+		.align-items#{$infix}-baseline
+			align-items: baseline !important
+		.align-items#{$infix}-stretch
+			align-items: stretch !important
+
+		.align-content#{$infix}-start
+			align-content: flex-start !important
+		.align-content#{$infix}-end
+			align-content: flex-end !important
+		.align-content#{$infix}-center
+			align-content: center !important
+		.align-content#{$infix}-between
+			align-content: space-between !important
+		.align-content#{$infix}-around
+			align-content: space-around !important
+		.align-content#{$infix}-stretch
+			align-content: stretch !important
+
+		.align-self#{$infix}-auto
+			align-self: auto !important
+		.align-self#{$infix}-start
+			align-self: flex-start !important
+		.align-self#{$infix}-end
+			align-self: flex-end !important
+		.align-self#{$infix}-center
+			align-self: center !important
+		.align-self#{$infix}-baseline
+			align-self: baseline !important
+		.align-self#{$infix}-stretch
+			align-self: stretch !important
+
+
+/* =======================================================
+						SIZING
+
+// This variable affects the `.h-*` and `.w-*` classes.
+$sizes: () !default
+// stylelint-disable-next-line scss/dollar-variable-default
+$sizes: map-merge(( 25: 25%, 50: 50%, 75: 75%, 100: 100%, auto: auto),$sizes)
+
+// stylelint-disable declaration-no-important
+
+// Width and height
+
+@each $prop, $abbrev in (width: w, height: h)
+	@each $size, $length in $sizes
+		.#{$abbrev}-#{$size}
+			#{$prop}: $length !important
+
+.mw-100
+	max-width: 100% !important
+.mh-100
+	max-height: 100% !important
+
+// Viewport additional helpers
+
+.min-vw-100
+	min-width: 100vw !important
+.min-vh-100
+	min-height: 100vh !important
+
+.vw-100
+	width: 100vw !important
+.vh-100
+	height: 100vh !important

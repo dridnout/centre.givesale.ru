@@ -1,0 +1,278 @@
+include ../mixins/mixins.pug
+doctype html
+html(lang="ru")
+	include ../layout/head.pug
+
+	body
+		//- include ../layout/pgs.pug
+		include ../layout/header.pug
+
+		main
+			.container 
+				include ../layout/breadcrumbs.pug
+
+				.cat-name
+					.cat-name-left
+						h1 Сервисные центры и ремонт Samsung
+						span.count 479 фирм
+					.cat-logo
+						img(src="images/cat-logo/cl-1.png", alt="")
+				.categories
+					.categories-wrap
+						a.categories-item(href="#")
+							span.categories-item__name Телевизоры
+							img.categories-item__img(src="images/cats/cat-1.png", alt="")
+						a.categories-item(href="#")
+							span.categories-item__name Samsung Galaxy
+							img.categories-item__img(src="images/cats/cat-2.png", alt="")
+						a.categories-item(href="#")
+							span.categories-item__name Стиральные<br>машины
+							img.categories-item__img(src="images/cats/cat-3.png", alt="")
+						a.categories-item(href="#")
+							span.categories-item__name Принтеры, МФУ
+							img.categories-item__img(src="images/cats/cat-4.png", alt="")
+						a.categories-item(href="#")
+							span.categories-item__name Планшеты
+							img.categories-item__img(src="images/cats/cat-5.png", alt="")
+						a.categories-item(href="#")
+							span.categories-item__name Холодильники
+							img.categories-item__img(src="images/cats/cat-6.png", alt="")
+						a.categories-item(href="#")
+							span.categories-item__name Ноутбуки
+							img.categories-item__img(src="images/cats/cat-7.png", alt="")
+						a.categories-item(href="#")
+							span.categories-item__name Микроволновки
+							img.categories-item__img(src="images/cats/cat-8.png", alt="")
+						a.categories-item(href="#")
+							span.categories-item__name Пылесосы
+							img.categories-item__img(src="images/cats/cat-9.png", alt="")
+						a.categories-item(href="#")
+							span.categories-item__name Кондиционеры
+							img.categories-item__img(src="images/cats/cat-10.png", alt="")
+						a.categories-item(href="#")
+							span.categories-item__name Мониторы
+							img.categories-item__img(src="images/cats/cat-11.png", alt="")
+						a.categories-item(href="#")
+							span.categories-item__name Видеокамеры
+							img.categories-item__img(src="images/cats/cat-12.png", alt="")
+						a.categories-item(href="#")
+							span.categories-item__name Духовые шкафы
+							img.categories-item__img(src="images/cats/cat-13.png", alt="")
+						a.categories-item.categories-item_all(href="#")
+							span.categories-item__name Показать все
+							i
+								+icon('shevron', 'shevron_cats')
+		
+				.services
+					.services-title
+						span Услуги и цены
+					.services-wrap
+						ul
+							li.service-item
+								a(href="#")
+									span.service-item__name Замена дисплея
+									span.service-item__price от 250 до 2 000 pyб.
+							li.service-item
+								a(href="#")
+									span.service-item__name Замена дисплея
+									span.service-item__price от 250 до 2 000 pyб.
+							li.service-item
+								a(href="#")
+									span.service-item__name Замена дисплея
+									span.service-item__price от 250 до 2 000 pyб.
+							li.service-item
+								a(href="#")
+									span.service-item__name Замена слота карты памяти
+									span.service-item__price от 250 до 2 000 pyб.
+							li.service-item
+								a(href="#")
+									span.service-item__name Замена слота карты памяти
+									span.service-item__price от 250 до 2 000 pyб.
+							li.service-item
+								a(href="#")
+									span.service-item__name Замена USB-разъёма
+									span.service-item__price от 250 до 2 000 pyб.
+							li.service-item
+								a(href="#")
+									span.service-item__name Замена USB-разъёма
+									span.service-item__price от 250 до 2 000 pyб.
+							li.service-item
+								a(href="#")
+									span.service-item__name Замена USB-разъёма
+									span.service-item__price от 250 до 2 000 pyб.
+							li.service-item
+								a(href="#")
+									span.service-item__name Замена слота карты памяти
+									span.service-item__price от 250 до 2 000 pyб.
+
+				.filters
+					a.filter-city-select(href="#") 
+						+icon('map-point', 'filter-map-point')
+						| Москва 
+					.select
+						.selection
+							span Время работы сервиса
+					.filter
+						.filter-item
+							input(type="checkbox" id="f-1")
+							label(for="f-1") Выезд мастера
+								+icon('close','filter-close')
+						.filter-item
+							input(type="checkbox" id="f-2")
+							label(for="f-2") Вызов курьера
+								+icon('close','filter-close')
+						.filter-item
+							input(type="checkbox" id="f-3")
+							label(for="f-3") Бесплатная
+								+icon('close','filter-close')
+						.filter-item
+							input(type="checkbox" id="f-4")
+							label(for="f-4") Диагностика
+								+icon('close','filter-close')
+						.filter-item
+							input(type="checkbox" id="f-5")
+							label(for="f-5") Срочный ремонт
+								+icon('close','filter-close')
+					.filter-control
+						a.btn-switch(href="#")
+							+icon('ccard-switch', 'btn-switch-icon')
+						a.btn-switch.is-active(href="#")
+							+icon('map-point', 'btn-switch-icon')
+
+				.centers-container.map-active
+					.centers-cards
+						.centers-cards-wrap
+							.ccard
+								.ccard-left
+									.ccard-top
+										.ccard-header
+											.ccard-header-left
+												img(src="images/ccard/logo-1.png", alt="")
+											.ccard-haeder-right
+												h2.ccard-title Starz
+												p.ccard-slogan Все ремонтируют здесь!
+												.ccard-rating
+													.ccard-rating-wrap
+														p.ccard-rating-sum 5.0
+														ul.ccard-rating-v
+															li
+																img(src="images/rating/star-on.svg", alt="")
+															li
+																img(src="images/rating/star-on.svg", alt="")
+															li
+																img(src="images/rating/star-on.svg", alt="")
+															li
+																img(src="images/rating/star-on.svg", alt="")
+															li
+																img(src="images/rating/star-off.svg", alt="")
+													a.ccard-reviews(href="#") 7 отзывов
+													a.btn.small-btn.btn-default(href="#") Оставить отзыв
+
+										.ccard-cases
+											.ccard-cases-item
+												span 24 часа
+											.ccard-cases-item
+												span Срочный ремонт
+											.ccard-cases-item
+												span Выезд мастера
+											.ccard-cases-item
+												span 24 часа
+									.ccard-body
+										.ccard-info
+											.ccard-services
+												ul.ccard-services-list
+													li.ccard-services-item 
+														+icon('services-list-check', 'services-list-check_mod')
+														| Ремонт Samsung - телевизоров, стиральных машин, принтеров, МФУ, планшетов, холодильников, ноутбуков и ещё 9 видов техники
+													li.ccard-services-item 
+														+icon('services-list-check', 'services-list-check_mod')
+														| Выездные мастера в день обращения
+													li.ccard-services-item 
+														+icon('services-list-check', 'services-list-check_mod')
+														| Гарантия на работы 1 год
+													li.ccard-services-item 
+														+icon('services-list-check', 'services-list-check_mod')
+														| 90% ремонтов менее чем за сутки
+													li.ccard-services-item 
+														+icon('services-list-check', 'services-list-check_mod')
+														| Клиенты оценивают сервис на 4,7 из 5
+											.ccard-photos
+												.ccard-photos-list
+													a.ccard-photos-list-item(href="#")
+														img(src="images/photos/p-1.jpg", alt="")
+													a.ccard-photos-list-item(href="#")
+														img(src="images/photos/p-2.jpg", alt="")
+													a.ccard-photos-list-item(href="#")
+														img(src="images/photos/p-3.jpg", alt="")
+													a.ccard-photos-list-item(href="#")
+														img(src="images/photos/p-4.jpg", alt="")
+													a.ccard-photos-list-item(href="#")
+														img(src="images/photos/p-5.jpg", alt="")
+													a.ccard-photos-list-item(href="#")
+														img(src="images/photos/p-6.jpg", alt="")
+													a.ccard-photos-list-item(href="#")
+														img(src="images/photos/p-7.jpg", alt="")
+												a.btn.btn-price(href="#") Ознакомиться с ценами на услуги
+										.ccard-contacts
+											.ccard-contacts-body
+												.ccard-contacts-row
+													.ccard-phone
+														span Телефон
+														a.phone(href="+7495 2412256") +7 (495) 241-22-56
+													.ccard-control
+														a.btn.btn-primary(href="#") Написать сообщение
+														a.btn.btn-default(href="#") Посетить сайт
+												.ccard-contacts-row
+													.ccard-address
+														span Сеть из 2 сервисных цетров
+														.ccard-address-list
+															.ccard-address-list-item.sc_open
+																p.ccard-address-list-item__title м. Новокузнецкая
+																p.ccard-address-list-item__address ул. Пятницкая, д. 18, стр. 4
+																p.ccard-address-list-item__status Работает круглосуточно
+															.ccard-address-list-item.sc_soon
+																p.ccard-address-list-item__title м. Зорге
+																p.ccard-address-list-item__address ул. Маршала Бирюзова, д. 1
+																p.ccard-address-list-item__status Закрывается через 38 минут (в 21:00)
+															.ccard-address-list-item.sc_close
+																p.ccard-address-list-item__title м. Новокузнецкая
+																p.ccard-address-list-item__address ул. Пятницкая, д. 18, стр. 4
+																p.ccard-address-list-item__status Откроется через 12 часов (в 09:00)
+														a.ccard-address-list-all(href="#") Посмотреть весь список
+											.ccard-contacts-footer
+												a.complaint(href="#") 
+													+icon('warning', 'warning_mod')
+													| Пожаловаться
+								.ccard-right
+							a.btn.btn-more(href="#") 
+								+icon('reload','reload_mod')
+								| Показать еще
+						.form-block
+							.form-block-wrap
+								h2 Вызов мастера для ремонта<br>стиральной машины
+								p 
+									| После отправки формы ваши данные будут переданы в подходящие сервисные центры Москвы. <br>
+									| Если какой-то из сервисных центров сможет помочь вашей проблеме, его менеджер позвонит на указанный вами номер телефона и вы обсудите с ним детали ремонта.
+								form#serviceCall.form.form-row(action="/" method="POST")
+									.form-group
+										input(type="tel" placeholder="+7(___)___-__-__")
+									.form-group
+										input(type="text" placeholder="Ваше имя")
+									.form-group
+										input(type="text" placeholder="Опишите поломку")
+									.form-group
+										input(type="submit" value="Отправить заявку")
+					
+						include ../layout/footer.pug
+					
+					.centers-map
+						.centers-map-search
+							input(type="text" placeholder="Поиск адреса")
+							+icon('magnify', 'magnify_mod')
+						#contacts-map(style="width:100%;height:100%")
+
+		// scripts
+		include ../layout/scripts.pug
+		script(src="https://api-maps.yandex.ru/2.1.17/?lang=ru_RU" type="text/javascript")
+		script(src="js/ya-maps-init.js")
+		script(src="js/main.js")

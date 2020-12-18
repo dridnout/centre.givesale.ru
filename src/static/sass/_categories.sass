@@ -1,0 +1,104 @@
+.categories
+	overflow: hidden
+	width: 100%
+	padding-top: 6px 
+	margin-bottom: 14px
+	&-wrap
+		width: auto
+		display: flex
+		flex-wrap: wrap
+		justify-content: flex-start
+		margin: 0 -14px
+	&-item
+		background-color: #fff
+		margin: 0 14px 20px
+		overflow: hidden
+		border-radius: 13px
+		height: 124px
+		position: relative
+		text-decoration: none
+		display: block
+		max-width: calc(14.28% - 28px)
+		width: 100%
+		transform: translateY(0)
+		box-shadow: none
+		transition: transform .15s cubic-bezier(.4,0,.21,1.1), box-shadow .15s cubic-bezier(.4,0,.21,1.1)
+		&:hover
+			transform: translateY(-6px)
+			box-shadow: 0 10px 20px -12px rgba(203,207,209,1)
+		&__name
+			position: absolute
+			top: 10px
+			left: 18px
+			color: #000000
+			font-size: em(16)
+			line-height: 1.2
+			z-index: 1
+		&__img
+			position: absolute
+			bottom: 0
+			left: 0
+			right: 0
+			margin: auto
+			z-index: 0
+	.shevron_cats
+		font-size: (9/14)*1rem
+		width: (16/9)*1em
+		position: absolute
+		top: 0
+		bottom: 0
+		left: 0
+		right: 0
+		margin: auto
+	i
+		background-color: #EEEEEE
+		width: 41px
+		height: 41px
+		display: block
+		border-radius: 50%
+		position: absolute
+		bottom: 34px
+		left: 0
+		right: 0
+		margin: auto
+.categories-item_all
+	background: linear-gradient(232.48deg, #DDDDDD 2.98%, rgba(255, 255, 255, 0) 31.72%), #F9F9FA;
+	border: 1px solid #C9CFD7
+
+@media (max-width: 1400px)
+	.categories
+		&-item
+			max-width: calc(16.6% - 28px)
+@media (max-width: 1300px)
+	.categories
+		&-item
+			max-width: calc(20% - 28px)
+@media (max-width: 1070px)
+	.categories
+		&-item
+			max-width: calc(20% - 28px)
+@media (max-width: 992px)
+	.categories
+		&-wrap
+			margin: 0 -8px
+		&-item
+			margin: 0 8px 20px
+			max-width: calc(25% - 16px)
+@media (max-width: 768px)
+	.categories
+		&-item
+			max-width: calc(33.333% - 16px)
+@media (max-width: 575px)
+	.categories
+		&-wrap
+			margin: 0 -5px
+		&-item
+			margin: 0 5px 10px
+			max-width: calc(50% - 10px)
+// @media (max-width: 480px)
+// 	.categories
+// 		&-wrap
+// 			margin: 0 0px
+// 		&-item
+// 			margin: 0 0px 10px
+// 			max-width: 100%

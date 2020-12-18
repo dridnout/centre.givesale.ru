@@ -1,0 +1,200 @@
+.header
+	height: 70px
+	background-color: #fff
+	border-bottom: 1px solid #D9D9D9
+	.container
+		height: inherit
+
+.left-links
+	align-items: center
+.logo
+	margin-right: 80px
+	img
+		float: left
+		margin-right: 18px
+		margin-top: 5px
+	a
+		font-size: em(18)
+		text-decoration: none
+		color: #616161
+.city-select
+	display: flex
+	align-items: center
+	font-size: em(14)
+	font-weight: 400
+	text-decoration: none
+	color: #616161
+	border: 0
+	background: transparent
+	cursor: pointer
+	transition: color .15s cubic-bezier(.4,0,.21,1.1)
+	&:hover
+		color: #3e3e3e
+	span 
+		border-bottom: 1px dotted #616161
+
+.map-point_mod
+	color: #FD9041
+	position: relative
+	margin-right: 8px
+
+
+.header-nav
+	ul
+		list-style: none
+		margin: 0
+		padding: 0
+		display: flex
+		align-items: center
+		li
+			padding: 0 20px
+			&:first-child
+				padding-left: 0
+			&:last-child
+				padding-right: 0
+			&:nth-of-type(3)
+				position: relative
+				&::before
+					content: ''
+					width: 5px
+					height: 5px
+					background-color: #4AE700
+					display: block
+					border-radius: 50%
+					position: absolute
+					top: -2px
+					left: 12px
+			
+		a
+			font-size: em(16)
+			color: #616161
+			text-decoration: none
+			transition: color .15s cubic-bezier(.4,0,.21,1.1)
+			&:hover
+				color: #3e3e3e
+		.shevron_mod
+			margin-left: 8px
+			color: #BAC6CD
+.m-btn-menu
+	display: none
+	position: relative
+	width: 24px
+	height: 18px
+	span
+		width: 24px
+		height: 3px
+		background-color: #000
+		display: block
+		position: absolute
+		top: 0
+		bottom: 0
+		margin: auto
+		&::after
+			content: ''
+			width: 24px
+			height: 3px
+			background-color: #000
+			display: block
+			position: absolute
+			top: -8px
+		&::before
+			content: ''
+			width: 24px
+			height: 3px
+			background-color: #000
+			display: block
+			position: absolute
+			bottom: -8px
+.theme_dark-blue
+	background-color: #0A2E65
+	.logo
+		a
+			color: #fff
+	.city-select
+		color: #fff
+		span
+			border-color: #fff
+	.header-nav
+		ul
+			a
+				color: #fff
+			.shevron_mod
+				color: #fff
+	.m-btn-menu
+		span
+			background-color: #fff
+			&:before,
+			&:after
+				background-color: #fff
+.theme_blue
+	background-color: #0B3E8B
+	.logo
+		a
+			color: #fff
+	.city-select
+		color: #fff
+		span
+			border-color: #fff
+	.header-nav
+		ul
+			a
+				color: #fff
+			.shevron_mod
+				color: #fff
+	.m-btn-menu
+		span
+			background-color: #fff
+			&:before,
+			&:after
+				background-color: #fff
+.theme_dark
+	background-color: #3A3E44
+	.logo
+		a
+			color: #fff
+	.city-select
+		color: #fff
+		span
+			border-color: #fff
+	.header-nav
+		ul
+			a
+				color: #fff
+			.shevron_mod
+				color: #fff
+	.m-btn-menu
+		span
+			background-color: #fff
+			&:before,
+			&:after
+				background-color: #fff
+@media (max-width: 1070px)
+	
+	.header-nav 
+		ul 
+			li
+				padding: 0 10px
+				&:nth-of-type(3)
+					&:before
+						left: 2px
+@media (max-width: 992px)
+	.header-nav
+		display: none
+	.header
+		.container
+			align-items: center
+	.m-btn-menu
+		display: block
+@media (max-width: 575px)
+	.logo
+		margin-right: 60px
+	.logo
+		img
+			margin-right: 16px
+@media (max-width: 480px)
+	.logo
+		margin-right: 20px
+	.city-select
+		padding: 0
+		span
+			display: none

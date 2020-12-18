@@ -1,0 +1,136 @@
+include ../mixins/mixins.pug
+doctype html
+html(lang="ru")
+	include ../layout/head.pug
+
+	body
+		//- include ../layout/pgs.pug
+		include ../layout/header.pug
+		header.header.theme_dark-blue
+			.container.d-flex.justify-content-between
+				.left-links.d-flex
+					.logo
+						a(href="#")
+							img(src="images/logo/logo.svg", alt="")
+							span Федеральный реестр<br>Сервисных центров
+					button.city-select 
+						+icon('map-point', 'map-point_mod')
+						span Москва
+				nav.header-nav.d-flex
+					ul
+						li
+							a(href="#") 
+								| Ремонт
+								+icon('shevron','shevron_mod')
+						li
+							a(href="#") 
+								| Услуги
+								+icon('shevron','shevron_mod')
+						li
+							a(href="#") Заявка на ремонт
+						li
+							a(href="#") Вопросы по ремонту
+				.m-btn-menu
+					span
+		header.header.theme_blue
+			.container.d-flex.justify-content-between
+				.left-links.d-flex
+					.logo
+						a(href="#")
+							img(src="images/logo/logo.svg", alt="")
+							span Федеральный реестр<br>Сервисных центров
+					button.city-select 
+						+icon('map-point', 'map-point_mod')
+						span Москва
+				nav.header-nav.d-flex
+					ul
+						li
+							a(href="#") 
+								| Ремонт
+								+icon('shevron','shevron_mod')
+						li
+							a(href="#") 
+								| Услуги
+								+icon('shevron','shevron_mod')
+						li
+							a(href="#") Заявка на ремонт
+						li
+							a(href="#") Вопросы по ремонту
+				.m-btn-menu
+					span
+		header.header.theme_dark
+			.container.d-flex.justify-content-between
+				.left-links.d-flex
+					.logo
+						a(href="#")
+							img(src="images/logo/logo.svg", alt="")
+							span Федеральный реестр<br>Сервисных центров
+					button.city-select 
+						+icon('map-point', 'map-point_mod')
+						span Москва
+				nav.header-nav.d-flex
+					ul
+						li
+							a(href="#") 
+								| Ремонт
+								+icon('shevron','shevron_mod')
+						li
+							a(href="#") 
+								| Услуги
+								+icon('shevron','shevron_mod')
+						li
+							a(href="#") Заявка на ремонт
+						li
+							a(href="#") Вопросы по ремонту
+				.m-btn-menu
+					span
+
+		.container
+			.ui-wrap
+				.city-select-body
+					form#citySelectForm.form(action="/")
+						.form-group
+							input(type="text" placeholder="Введите наименование города")
+					.cities
+						.cities-col
+							a.cities-item(href="#") Москва
+							a.cities-item(href="#") Санкт-Петербург
+							a.cities-item(href="#") Волгоград
+							a.cities-item(href="#") Воронеж
+							a.cities-item(href="#") Екатеринбург
+							a.cities-item(href="#") Иркутск
+							a.cities-item(href="#") Казань
+						.cities-col
+							a.cities-item(href="#") Краснодар
+							a.cities-item(href="#") Красноярск
+							a.cities-item(href="#") Нижний Новгород
+							a.cities-item(href="#") Новосибирск
+							a.cities-item(href="#") Омск
+							a.cities-item(href="#") Пермь
+							a.cities-item(href="#") Ростов-на-Дону
+						.cities-col
+							a.cities-item(href="#") Самара
+							a.cities-item(href="#") Сочи
+							a.cities-item(href="#") Уфа
+							a.cities-item(href="#") Челябинск
+			.ui-wrap
+				.row
+					.select.col-xs-2
+						.selection
+							span Время работы сервиса
+					.select.is-open.col-xs-2
+						.selection
+							span Время работы сервиса
+						.select-dropdown
+							.checkbox
+								input(type="checkbox" id="ch-1")
+								label(for="ch-1") до 10:00
+							.checkbox
+								input(type="checkbox" id="ch-2")
+								label(for="ch-2") после 19:00
+							.checkbox
+								input(type="checkbox" id="ch-3")
+								label(for="ch-3") круглосуточно
+		// scripts
+		include ../layout/scripts.pug
+		script(src="js/main.js")

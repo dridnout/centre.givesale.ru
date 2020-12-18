@@ -1,0 +1,40 @@
+.checkbox
+    margin-bottom: 15px
+    label
+        position: relative
+        padding-left: 25px
+        z-index: 0
+        font-size: em(14)
+        color: #4F4F4F
+        font-weight: 400
+        cursor: pointer
+        &::after
+            content: ''
+            display: block
+            width: 18px
+            height: 18px
+            background-color: #fff
+            border: 1px solid #E3E3E3
+            border-radius: 4px
+            position: absolute
+            top: 0
+            left: 0
+            z-index: 0
+        &::before
+            content: ''
+            display: none
+            background: url(../images/ui/checkbox-check.svg) 0 0 no-repeat
+            background-size: 12px 10px
+            width: 12px
+            height: 10px
+            z-index: 1
+            position: absolute
+            
+            left: 3px
+            top: 3px
+    input[type="checkbox"]:checked ~ label
+        &::after
+            background-color: #3785FA
+            border-color: #3785FA
+        &:before
+            display: block

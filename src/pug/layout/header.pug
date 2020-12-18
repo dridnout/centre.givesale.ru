@@ -1,0 +1,28 @@
+include pgs.pug
+header.header
+	.container.d-flex.justify-content-between
+		.left-links.d-flex
+			.logo
+				a(href="#")
+					img(src="images/logo/logo.svg", alt="")
+					span Федеральный реестр<br>Сервисных центров
+			button.city-select 
+				+icon('map-point', 'map-point_mod')
+				span Москва
+		nav.header-nav.d-flex
+			ul
+				li
+					a(href="#") 
+						| Ремонт
+						+icon('shevron','shevron_mod')
+				li
+					a(href="#") 
+						| Услуги
+						+icon('shevron','shevron_mod')
+				li
+					a(href="#") Заявка на ремонт
+				li
+					a(href="#") Вопросы по ремонту
+		.m-btn-menu
+			span
+			

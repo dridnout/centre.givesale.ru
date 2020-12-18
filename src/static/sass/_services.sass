@@ -1,0 +1,49 @@
+.services
+	background-color: #fff
+	padding: 15px 30px
+	border-radius: 9px
+	box-shadow: 0 4px 4px rgba(187,187,187,.25)
+	margin-bottom: 30px
+	&-title
+		margin-bottom: 14px
+		span
+			font-size: em(18)
+			line-height: 1.2
+			color: #4F4F4F
+			font-weight: 400
+	&-wrap
+		overflow: hidden
+	a
+		text-decoration: none
+	
+	ul
+		list-style: none
+		margin: 0 -8px
+		padding: 0
+
+	.service-item
+		border-radius: 6px
+		background-color: #F3F6F9
+		padding: 10px 15px
+		display: inline-block
+		margin: 0 7px 12px
+		transition: background-color .15s cubic-bezier(.4,0,.21,1.1)
+		&:hover
+			background-color: #FFC046
+		&__name
+			display: block
+			color: #4F4F4F
+			margin-bottom: 4px
+			font-size: em(14)
+			line-height: 1.2
+			white-space: nowrap
+		&__price
+			display: block
+			color: #9A9A9A
+			font-size: em(14)
+			line-height: 1.2
+			white-space: nowrap
+
+@media (max-width: 992px)
+	.services
+		padding: 15px

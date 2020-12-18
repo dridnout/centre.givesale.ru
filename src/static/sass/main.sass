@@ -1,0 +1,61 @@
+@import "vars"
+@import "fonts"
+@import "function/rem"
+
+html 
+	box-sizing: border-box
+	-ms-overflow-style: scrollbar
+
+*,
+*::before,
+*::after 
+	box-sizing: inherit
+
+img
+	max-width: 100%
+body
+	min-width: 320px
+	font-family: $default
+	font-size: 1rem
+	font-weight: 400
+	color: #2d2d2d
+	overflow-x: hidden
+	background-color: #F8F8F8
+input,
+textarea,
+button
+	-webkit-appearance: none
+	-moz-appearance: none
+	appearance: none
+	&:focus
+		outline: none
+input::-ms-reveal, input::-ms-clear
+	display: none
+
+button
+	touch-action: manipulation
+
+
+.d-flex
+	display: flex
+
+// main sass
+@import "grid"
+// @import "grid-style"
+@import "sprite"
+@import "sprite-mod"
+@import "header"
+@import "breadcrumbs"
+@import "cat-name"
+@import "categories"
+@import "services"
+@import "filter"
+@import "centers"
+@import "ccard"
+@import "forms"
+@import "footer"
+@import "map"
+@import "city-select-body"
+@import "select"
+@import "checkbox"
+@import "ui-wrap"
