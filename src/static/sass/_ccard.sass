@@ -1,5 +1,4 @@
 .ccard
-	display: flex
 	background-color: #fff
 	border-radius: 15px
 	margin-bottom: 25px
@@ -12,10 +11,10 @@
 	&-left
 		width: 100%
 		max-width: 100%
+		flex: 0 0 100%
 	&-right
 		display: none
 	&-header
-		display: flex
 		padding-bottom: 15px
 		padding-top: 15px
 		border-bottom: 1px solid #E4E4E4
@@ -24,8 +23,10 @@
 			padding-right: 25px
 			width: 160px
 			max-width: 160px
+			flex: 0 0 160px
 		&-right
 			max-width: calc(100% - 160px)
+			flex: 0 0 calc(100% - 160px)
 	&-title
 		margin: 0
 		font-size: em(32)
@@ -40,12 +41,6 @@
 		display: block
 		margin: 0 0 4px 0
 	&-rating
-		display: flex
-		align-items: center
-		justify-content: flex-start
-		&-wrap
-			display: flex
-			align-items: center
 		&-sum
 			font-size: em(24)
 			color: #000000
@@ -85,10 +80,9 @@
 				font-size: em(13)
 				color: #4F4F4F
 				line-height: 0.8
-	&-body
-		display: flex
 	&-info
 		max-width: calc(100% - 330px)
+		flex: 0 0 calc(100% - 330px)
 	&-services
 		padding: 30px
 		border-bottom: 1px solid #E4E4E4
@@ -108,20 +102,19 @@
 		padding: 20px 30px
 		&-list
 			overflow: hidden
-			margin: -2px -2px 20px -2px
+			margin: 0 0 20px 0
 			font-size: 0
 			&-item
-				display: inline-block
-				width: 121px
-				height: 75px
-				margin: 2px
+				display: block
+				max-height: 120px
+				margin: 0px -9px 2px
 				overflow: hidden
 				position: relative
 				cursor: pointer
-				&::before
+				&::after
 					content: ''
 					background: url(../images/ui/w-plus.svg) 0 0 no-repeat
-					background-size: 24px 24
+					background-size: 24px 24px
 					width: 24px
 					height: 24px
 					position: absolute
@@ -133,12 +126,12 @@
 					z-index: 1
 					opacity: 0
 					transition: opacity .15s cubic-bezier(.4,0,.21,1.1)
-				&::after
+				&::before
 					content: ''
 					position: absolute
 					z-index: 0
 					width: 100%
-					height: 100px
+					height: 100%
 					background-color: rgba(0,0,0,.49)
 					opacity: 0
 					transition: opacity .15s cubic-bezier(.4,0,.21,1.1)
@@ -147,28 +140,13 @@
 					&::before
 						opacity: 1
 				img
-					position: absolute
-					top: 0
-					left: 0
-					right: 0
-					margin: auto
+					width: 100%
 	&-contacts
-		display: flex
-		flex-direction: column
 		width: 100%
 		max-width: 330px
+		flex: 0 0 330px
 		border-left: 1px solid #DEDEDE
-		&-body
-			display: flex
-			flex-direction: column
-		&-row
-			&:nth-of-child(1)
-				order: 1
-			&:nth-of-child(2)
-				order: 0
 		&-footer
-			display: flex
-			justify-content: flex-end
 			margin-top: auto
 			padding: 10px
 	&-address
@@ -181,9 +159,6 @@
 			display: block
 			margin-bottom: 15px
 		&-list
-			display: flex
-			flex-direction: column
-			justify-content: fles-start
 			margin-bottom: 20px
 			&-item
 				padding-left: 20px
@@ -286,87 +261,17 @@
 		left: 6px
 		top: 6px
 		color: #9A7B2C
-.btn
-	display: inline-block
-	padding: 13px 14px
-	border-radius: 9px
-	font-size: em(13)
-	line-height: 1
-	font-weight: 400
-	text-decoration: none
-	border: 1px solid transparent
-	cursor: pointer
-	white-space: nowrap
-	text-align: center
-.btn-primary
-	background-color: #3785FA
-	color: #ffffff
-	transition: background-color .15s cubic-bezier(.4,0,.21,1.1)
-	&:hover
-		background-color: #225eb9
-.btn-default
-	background-color: #ffffff
-	color: #4F4F4F
-	border: 1px solid #D4D4D4
-	transition: background-color .15s cubic-bezier(.4,0,.21,1.1), border-color .15s cubic-bezier(.4,0,.21,1.1), color .15s cubic-bezier(.4,0,.21,1.1)
-	&:hover
-		background-color: #3785FA
-		border-color: #3785FA
-		color: #fff
-.small-btn
-	font-size: em(11)
-	border-radius: 4px
-	padding: 6px 9px
-.btn-more
-	width: 100%
-	background-color: #E4EBF3
-	font-size: em(18)
-	color: #8697A4
-	text-align: center
-	position: relative
-	padding: 17px 0
-	transition: background-color .15s cubic-bezier(.4,0,.21,1.1), color .15s cubic-bezier(.4,0,.21,1.1)
-	&:hover
-		background-color: #3785FA
-		color: #fff
-		.reload_mod
-			color: #fff
-	.reload_mod
-		position: absolute
-		top: 0
-		bottom: 0
-		left: 0
-		right: 170px
-		margin: auto
-.btn-price
-	background-color: #F3F8FB
-	color: #7D8898
-	width: 100%
-	transition: background-color .15s cubic-bezier(.4,0,.21,1.1), color .15s cubic-bezier(.4,0,.21,1.1)
-	&:hover
-		background-color: #3785FA
-		color: #fff
+
 @media (max-width: 768px)
 	.ccard
-		&-body
-			flex-direction: column
 		&-info
 			max-width: 100%
 		&-contacts
 			max-width: 100%
+			flex: 0 0 auto
 			border-left: 0
 			border-top: 1px solid #D4D4D4
-			&-body
-				flex-direction: row
-				justify-content: space-between
-			&-row
-				&:nth-of-type(1)
-					order: 1
-				&:nth-of-type(2)
-					order: 0
 		&-control
-			flex-direction: column
-			display: flex
 			.btn
 				margin-right: 0
 		&-phone
@@ -375,8 +280,6 @@
 			padding: 20px
 		&-photos
 			padding: 20px
-			
-				
 		&-services
 			padding: 30px 20px
 		&-cases
@@ -385,39 +288,26 @@
 		font-size: em(16)
 		.reload_mod
 			right: 150px
+
 @media (max-width: 575px)
 	.ccard
+		&-header
+			text-align: center
+			&-left
+				flex: 0 0 auto
 		&-rating
-			flex-direction: column
-			align-items: flex-start
 			&-wrap
 				margin-bottom: 10px
-		&-photos
-			&-list
-				overflow: hidden
-				height: 80px			
-		&-contacts
-			&-body
-				flex-direction: column
-				justify-content: flex-start
-			&-row
-				&:nth-of-type(1)
-					order: 0
-				&:nth-of-type(2)
-					order: 1
+		&-reviews
+			margin-right: 0		
 @media (max-width: 375px)
 	.ccard
 		&-header
-			flex-direction: column
-			align-items: center
-			text-align: center
 			&-left
 				margin-bottom: 20px
 				padding: 0
 		&-slogan
 			margin-bottom: 14px
 		&-rating
-			flex-direction: column
-			align-items: center
 			&-wrap
 				margin-bottom: 10px

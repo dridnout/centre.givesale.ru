@@ -40,41 +40,36 @@
 
 
 .header-nav
-	ul
-		list-style: none
-		margin: 0
-		padding: 0
-		display: flex
-		align-items: center
-		li
-			padding: 0 20px
-			&:first-child
-				padding-left: 0
-			&:last-child
-				padding-right: 0
-			&:nth-of-type(3)
-				position: relative
-				&::before
-					content: ''
-					width: 5px
-					height: 5px
-					background-color: #4AE700
-					display: block
-					border-radius: 50%
-					position: absolute
-					top: -2px
-					left: 12px
-			
-		a
-			font-size: em(16)
-			color: #616161
-			text-decoration: none
-			transition: color .15s cubic-bezier(.4,0,.21,1.1)
-			&:hover
-				color: #3e3e3e
-		.shevron_mod
-			margin-left: 8px
-			color: #BAC6CD
+	display: inline-block
+	text-align: right
+	a
+		font-size: em(16)
+		color: #616161
+		padding: 0 20px
+		text-decoration: none
+		transition: color .15s cubic-bezier(.4,0,.21,1.1)
+		&:hover
+			color: #3e3e3e
+		&:first-child
+			padding-left: 0
+		&:last-child
+			padding-right: 0
+		&:nth-of-type(3)
+			position: relative
+			&::before
+				content: ''
+				width: 5px
+				height: 5px
+				background-color: #4AE700
+				display: block
+				border-radius: 50%
+				position: absolute
+				top: -2px
+				left: 12px
+		
+	.shevron_mod
+		margin-left: 8px
+		color: #BAC6CD
 .m-btn-menu
 	display: none
 	position: relative
@@ -88,6 +83,7 @@
 		position: absolute
 		top: 0
 		bottom: 0
+		right: 0
 		margin: auto
 		&::after
 			content: ''
@@ -115,11 +111,10 @@
 		span
 			border-color: #fff
 	.header-nav
-		ul
-			a
-				color: #fff
-			.shevron_mod
-				color: #fff
+		a
+			color: #fff
+		.shevron_mod
+			color: #fff
 	.m-btn-menu
 		span
 			background-color: #fff
@@ -136,11 +131,10 @@
 		span
 			border-color: #fff
 	.header-nav
-		ul
-			a
-				color: #fff
-			.shevron_mod
-				color: #fff
+		a
+			color: #fff
+		.shevron_mod
+			color: #fff
 	.m-btn-menu
 		span
 			background-color: #fff
@@ -157,11 +151,10 @@
 		span
 			border-color: #fff
 	.header-nav
-		ul
-			a
-				color: #fff
-			.shevron_mod
-				color: #fff
+		a
+			color: #fff
+		.shevron_mod
+			color: #fff
 	.m-btn-menu
 		span
 			background-color: #fff
@@ -169,32 +162,33 @@
 			&:after
 				background-color: #fff
 @media (max-width: 1070px)
-	
+	.logo
+		margin-right: 30px
 	.header-nav 
-		ul 
-			li
-				padding: 0 10px
-				&:nth-of-type(3)
-					&:before
-						left: 2px
+		a
+			padding: 0 10px
+			&:nth-of-type(3)
+				&:before
+					left: 2px
 @media (max-width: 992px)
 	.header-nav
 		display: none
-	.header
-		.container
-			align-items: center
 	.m-btn-menu
 		display: block
+
 @media (max-width: 575px)
 	.logo
-		margin-right: 60px
+		margin-right: 15px
 	.logo
 		img
 			margin-right: 16px
+	.city-select
+		padding-right: 15px
 @media (max-width: 480px)
 	.logo
-		margin-right: 20px
+		margin-right: 0px
 	.city-select
-		padding: 0
+		.map-point_mod
+			margin-right: 0
 		span
 			display: none

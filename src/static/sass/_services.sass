@@ -13,20 +13,16 @@
 			font-weight: 400
 	&-wrap
 		overflow: hidden
+		margin: 0 -10px
+		width: auto
 	a
 		text-decoration: none
-	
-	ul
-		list-style: none
-		margin: 0 -8px
-		padding: 0
-
 	.service-item
 		border-radius: 6px
 		background-color: #F3F6F9
 		padding: 10px 15px
 		display: inline-block
-		margin: 0 7px 12px
+		margin-bottom: 15px
 		transition: background-color .15s cubic-bezier(.4,0,.21,1.1)
 		&:hover
 			background-color: #FFC046
@@ -46,4 +42,9 @@
 
 @media (max-width: 992px)
 	.services
-		padding: 15px
+		padding: 10px
+		.service-item
+			width: 100%
+			&__name,
+			&__price
+				white-space: normal

@@ -4,14 +4,14 @@ $(document).ready(function(){
     
     svg4everybody({});
 
-    enquire.register("screen and (max-width: 1200px)", {
+    enquire.register("screen and (max-width: 1500px)", {
 
 		// OPTIONAL
 		// If supplied, triggered when a media query matches.
 		match : function() {
             // $('.ccard .ccard-contacts').appendTo('.ccard .ccard-right');
             $('.form-block').insertAfter('.centers-container');
-            $('.footer').insertAfter('.form-block');
+            // $('.footer').insertAfter('.form-block');
 		},
 
 		// OPTIONAL
@@ -19,7 +19,7 @@ $(document).ready(function(){
 		// *from a matched state to an unmatched state*.
 		unmatch : function() {
             $('.form-block').insertAfter('.centers-cards-wrap');
-            $('.footer').insertAfter('.form-block');
+            // $('.footer').insertAfter('.form-block');
 
         }
 	});

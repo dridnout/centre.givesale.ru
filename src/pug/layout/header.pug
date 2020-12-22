@@ -1,28 +1,24 @@
 include pgs.pug
+
+
 header.header
-	.container.d-flex.justify-content-between
-		.left-links.d-flex
-			.logo
+	.container
+		.header-wrap.d-flex.justify-content-left.align-items-center.h-100
+			.logo.flex-grow-1.flex-sm-grow-0.flex-md-grow-0.flex-lg-0.flex-xl-grow-0
 				a(href="#")
 					img(src="images/logo/logo.svg", alt="")
 					span Федеральный реестр<br>Сервисных центров
-			button.city-select 
+
+			button.city-select
 				+icon('map-point', 'map-point_mod')
 				span Москва
-		nav.header-nav.d-flex
-			ul
-				li
-					a(href="#") 
-						| Ремонт
-						+icon('shevron','shevron_mod')
-				li
-					a(href="#") 
-						| Услуги
-						+icon('shevron','shevron_mod')
-				li
-					a(href="#") Заявка на ремонт
-				li
-					a(href="#") Вопросы по ремонту
-		.m-btn-menu
-			span
-			
+
+			nav.header-nav.flex-grow-1
+				a(href="#") Ремонт
+					+icon('shevron','shevron_mod')
+				a(href="#") Услуги
+					+icon('shevron','shevron_mod')
+				a(href="#") Заявка на ремонт
+				a(href="#") Вопросы по ремонту
+			.m-btn-menu.flex-md-grow-1.flex-sm-grow-1
+				span

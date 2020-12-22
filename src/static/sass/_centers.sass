@@ -1,48 +1,33 @@
-.centers-container
-	display: flex
-	justify-content: space-between
-.centers-cards
-	width: 100%
-	max-width: 890px
-	margin-right: 20px
 .centers-cards-wrap
 	margin-bottom: 50px
 .centers-map
-	width: 100%
-	max-width: calc(100% - 910px)
 	height: 1095px
-	margin-bottom: 50px
-	background-color: #eeeeee
-	border-radius: 15px
-	position: relative
 	overflow: hidden
-	&::before
-		content: ''
-		width: 100%
+	margin-bottom: 50px
+	&-wrap
 		height: 100%
-		display: block
-		position: absolute
-		top: 0
-		left: 0
-		background: linear-gradient(180deg, #000000 -59.58%, rgba(196, 196, 196, 0) 27.87%)
-		z-index: 1
+		background-color: #eeeeee
+		border-radius: 15px
+		position: relative
+		overflow: hidden
+		&::before
+			content: ''
+			width: 100%
+			height: 110px
+			display: block
+			position: absolute
+			top: 0
+			left: 0
+			background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(196, 196, 196, 0) 100%)
+			z-index: 1
 
-@media (max-width: 1366px)
+
+@media (max-width: 1500px)
 	.centers-map
-		max-width: calc(100% - 790px)
-@media (max-width: 1200px)
-	.centers-map
-		max-width: 0
-		width: 0
 		display: none
-	.centers-cards
-		max-width: 100%
-		margin-right: 0
 	.map-active
 		.centers-cards
 			display: none
 		.centers-map
-			max-width: 100%
-			width: 100%
-			height: 820px
+			height: 580px
 			display: block

@@ -9,16 +9,9 @@
         border: 1px solid #D8D8D8
         background-color: #F9F9F9
 .cities
-    display: flex
-    flex-wrap: wrap
-    justify-content: flex-start
     margin: 0 -22px
     overflow: hidden
     &-col
-        display: flex
-        flex-direction: column
-        width: 100%
-        max-width: 33.333%
         padding: 0 10px
     &-item 
         font-size: em(14)
@@ -30,11 +23,3 @@
         transition: background-color .15s cubic-bezier(.4,0,.21,1.1)
         &:hover
             background-color: #EFF5F8
-@media (max-width: 768px)
-    .cities
-        &-col
-            max-width: 50%
-@media (max-width: 480px)
-    .cities
-        &-col
-            max-width: 100%

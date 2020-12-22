@@ -1,8 +1,6 @@
 .footer
 	padding-top: 50px
 	padding-bottom: 55px
-	display: flex
-	justify-content: space-between
 	p
 		font-size: em(13)
 		line-height: 1.2
@@ -25,6 +23,7 @@
 			position: relative
 			display: inline-block
 			&:last-of-type
+				padding-right: 0
 				&::after
 					content: none
 			&::after
@@ -49,41 +48,18 @@
 		&:last-child
 			margin-right: 0
 .footer-control
-	display: flex
-	justify-content: flex-start
 	.btn
 		margin-right: 10px
 		&:last-child
 			margin-right: 0
-.btn-footer
-	background-color: #E3E7EB
-	color: #8C8C8C
-	position: relative
-	transition: background-color .15s cubic-bezier(.4,0,.21,1.1), color .15s cubic-bezier(.4,0,.21,1.1)
-	&:hover
-		background-color: #283644
-		color: #ffffff
-.btn-login
-	padding-left: 35px
-	&:hover
-		.login_mod
-			color: #fff
-	.login_mod
-		position: absolute
-		left: 12px
-		top: 0
-		bottom: 0
-		margin: auto
-		color: #8C8C8C
+
 
 @media (max-width: 768px)
 	.footer
-		flex-direction: column
-		align-items: center
-		text-align: center
 		&-col
 			&:nth-of-type(2)
 				order: 0
 				margin-bottom: 40px
 			&:nth-of-type(1)
 				order: 1
+				text-align: center

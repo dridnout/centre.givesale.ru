@@ -7,83 +7,69 @@ html(lang="ru")
 		//- include ../layout/pgs.pug
 		include ../layout/header.pug
 		header.header.theme_dark-blue
-			.container.d-flex.justify-content-between
-				.left-links.d-flex
-					.logo
+			.container
+				.header-wrap.d-flex.justify-content-left.align-items-center.h-100
+					.logo.flex-grow-1.flex-sm-grow-0.flex-md-grow-0.flex-lg-0.flex-xl-grow-0
 						a(href="#")
 							img(src="images/logo/logo.svg", alt="")
 							span Федеральный реестр<br>Сервисных центров
-					button.city-select 
+
+					button.city-select
 						+icon('map-point', 'map-point_mod')
 						span Москва
-				nav.header-nav.d-flex
-					ul
-						li
-							a(href="#") 
-								| Ремонт
-								+icon('shevron','shevron_mod')
-						li
-							a(href="#") 
-								| Услуги
-								+icon('shevron','shevron_mod')
-						li
-							a(href="#") Заявка на ремонт
-						li
-							a(href="#") Вопросы по ремонту
-				.m-btn-menu
-					span
+
+					nav.header-nav.flex-grow-1
+						a(href="#") Ремонт
+							+icon('shevron','shevron_mod')
+						a(href="#") Услуги
+							+icon('shevron','shevron_mod')
+						a(href="#") Заявка на ремонт
+						a(href="#") Вопросы по ремонту
+					.m-btn-menu.flex-md-grow-1.flex-sm-grow-1
+						span
 		header.header.theme_blue
-			.container.d-flex.justify-content-between
-				.left-links.d-flex
-					.logo
+			.container
+				.header-wrap.d-flex.justify-content-left.align-items-center.h-100
+					.logo.flex-grow-1.flex-sm-grow-0.flex-md-grow-0.flex-lg-0.flex-xl-grow-0
 						a(href="#")
 							img(src="images/logo/logo.svg", alt="")
 							span Федеральный реестр<br>Сервисных центров
-					button.city-select 
+
+					button.city-select
 						+icon('map-point', 'map-point_mod')
 						span Москва
-				nav.header-nav.d-flex
-					ul
-						li
-							a(href="#") 
-								| Ремонт
-								+icon('shevron','shevron_mod')
-						li
-							a(href="#") 
-								| Услуги
-								+icon('shevron','shevron_mod')
-						li
-							a(href="#") Заявка на ремонт
-						li
-							a(href="#") Вопросы по ремонту
-				.m-btn-menu
-					span
+
+					nav.header-nav.flex-grow-1
+						a(href="#") Ремонт
+							+icon('shevron','shevron_mod')
+						a(href="#") Услуги
+							+icon('shevron','shevron_mod')
+						a(href="#") Заявка на ремонт
+						a(href="#") Вопросы по ремонту
+					.m-btn-menu.flex-md-grow-1.flex-sm-grow-1
+						span
 		header.header.theme_dark
-			.container.d-flex.justify-content-between
-				.left-links.d-flex
-					.logo
+			.container
+				.header-wrap.d-flex.justify-content-left.align-items-center.h-100
+					.logo.flex-grow-1.flex-sm-grow-0.flex-md-grow-0.flex-lg-0.flex-xl-grow-0
 						a(href="#")
 							img(src="images/logo/logo.svg", alt="")
 							span Федеральный реестр<br>Сервисных центров
-					button.city-select 
+
+					button.city-select
 						+icon('map-point', 'map-point_mod')
 						span Москва
-				nav.header-nav.d-flex
-					ul
-						li
-							a(href="#") 
-								| Ремонт
-								+icon('shevron','shevron_mod')
-						li
-							a(href="#") 
-								| Услуги
-								+icon('shevron','shevron_mod')
-						li
-							a(href="#") Заявка на ремонт
-						li
-							a(href="#") Вопросы по ремонту
-				.m-btn-menu
-					span
+
+					nav.header-nav.flex-grow-1
+						a(href="#") Ремонт
+							+icon('shevron','shevron_mod')
+						a(href="#") Услуги
+							+icon('shevron','shevron_mod')
+						a(href="#") Заявка на ремонт
+						a(href="#") Вопросы по ремонту
+					.m-btn-menu.flex-md-grow-1.flex-sm-grow-1
+						span
+
 
 		.container
 			.ui-wrap
@@ -91,8 +77,8 @@ html(lang="ru")
 					form#citySelectForm.form(action="/")
 						.form-group
 							input(type="text" placeholder="Введите наименование города")
-					.cities
-						.cities-col
+					.cities.d-flex.flex-wrap.justify-content-start
+						.col-12.col-sm-6.col-md-4.cities-col.d-flex.flex-column
 							a.cities-item(href="#") Москва
 							a.cities-item(href="#") Санкт-Петербург
 							a.cities-item(href="#") Волгоград
@@ -100,7 +86,7 @@ html(lang="ru")
 							a.cities-item(href="#") Екатеринбург
 							a.cities-item(href="#") Иркутск
 							a.cities-item(href="#") Казань
-						.cities-col
+						.col-12.col-sm-6.col-md-4.cities-col.d-flex.flex-column
 							a.cities-item(href="#") Краснодар
 							a.cities-item(href="#") Красноярск
 							a.cities-item(href="#") Нижний Новгород
@@ -108,7 +94,7 @@ html(lang="ru")
 							a.cities-item(href="#") Омск
 							a.cities-item(href="#") Пермь
 							a.cities-item(href="#") Ростов-на-Дону
-						.cities-col
+						.col-12.col-sm-6.col-md-4.cities-col.d-flex.flex-column
 							a.cities-item(href="#") Самара
 							a.cities-item(href="#") Сочи
 							a.cities-item(href="#") Уфа
