@@ -1,4 +1,10 @@
-<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M11.9 23.9C11.3 23.9 10.9 23.5 10.9 22.9V1C10.9 0.4 11.3 0 11.9 0C12.5 0 12.9 0.4 12.9 1V22.9C12.9 23.4 12.5 23.9 11.9 23.9Z" fill="white"/>
-<path d="M22.9 12.8999H1C0.4 12.8999 0 12.4999 0 11.8999C0 11.2999 0.4 10.8999 1 10.8999H22.9C23.5 10.8999 23.9 11.2999 23.9 11.8999C23.9 12.4999 23.4 12.8999 22.9 12.8999Z" fill="white"/>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 23.9 23.9" style="enable-background:new 0 0 23.9 23.9;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+</style>
+<path class="st0" d="M11.9,23.9c-0.6,0-1-0.4-1-1V1c0-0.6,0.4-1,1-1c0.6,0,1,0.4,1,1v21.9C12.9,23.4,12.5,23.9,11.9,23.9z"/>
+<path class="st0" d="M22.9,12.9H1c-0.6,0-1-0.4-1-1c0-0.6,0.4-1,1-1h21.9c0.6,0,1,0.4,1,1C23.9,12.5,23.4,12.9,22.9,12.9z"/>
 </svg>
