@@ -8,7 +8,7 @@
 .left-links
 	align-items: center
 .logo
-	margin-right: 80px
+	margin-right: 40px
 	img
 		float: left
 		margin-right: 18px
@@ -17,6 +17,7 @@
 		font-size: em(18)
 		text-decoration: none
 		color: #616161
+		line-height: 1
 .city-select
 	display: flex
 	align-items: center
@@ -39,143 +40,87 @@
 	margin-right: 8px
 
 
-.header-nav
-	display: inline-block
-	text-align: right
-	a
-		font-size: em(16)
+.navbar-expand-lg .navbar-nav .nav-link
+	padding-left: .8rem
+	padding-right: .8rem
+.dropdown-toggle:after
+	border: none
+	background: url(../images/icons/shevron.svg) 0 0 no-repeat
+	background-size: 12px 7px
+	width: 12px
+	height: 7px
+	vertical-align: 0
+	margin-left: 8px
+
+.navbar-toggler-icon
+	background: url(../images/ui/burger.svg) 0 0 no-repeat
+
+.navbar-light
+	.logo
+		a
+			color: #616161
+	.city-select
 		color: #616161
-		padding: 0 20px
-		text-decoration: none
-		transition: color .15s cubic-bezier(.4,0,.21,1.1)
 		&:hover
 			color: #3e3e3e
-		&:first-child
-			padding-left: 0
-		&:last-child
-			padding-right: 0
-		&:nth-of-type(3)
-			position: relative
-			&::before
-				content: ''
-				width: 5px
-				height: 5px
-				background-color: #4AE700
-				display: block
-				border-radius: 50%
-				position: absolute
-				top: -2px
-				left: 12px
-		
-	.shevron_mod
-		margin-left: 8px
-		color: #BAC6CD
-.m-btn-menu
-	display: none
-	position: relative
-	width: 24px
-	height: 18px
-	span
-		width: 24px
-		height: 3px
-		background-color: #000
-		display: block
-		position: absolute
-		top: 0
-		bottom: 0
-		right: 0
-		margin: auto
-		&::after
-			content: ''
-			width: 24px
-			height: 3px
-			background-color: #000
-			display: block
-			position: absolute
-			top: -8px
-		&::before
-			content: ''
-			width: 24px
-			height: 3px
-			background-color: #000
-			display: block
-			position: absolute
-			bottom: -8px
-.theme_dark-blue
-	background-color: #0A2E65
+		span 
+			border-bottom: 1px dotted #616161
+.navbar-dark
 	.logo
 		a
-			color: #fff
+			color: #ffffff
 	.city-select
-		color: #fff
-		span
-			border-color: #fff
-	.header-nav
-		a
-			color: #fff
-		.shevron_mod
-			color: #fff
-	.m-btn-menu
-		span
-			background-color: #fff
-			&:before,
-			&:after
-				background-color: #fff
-.theme_blue
-	background-color: #0B3E8B
-	.logo
-		a
-			color: #fff
-	.city-select
-		color: #fff
-		span
-			border-color: #fff
-	.header-nav
-		a
-			color: #fff
-		.shevron_mod
-			color: #fff
-	.m-btn-menu
-		span
-			background-color: #fff
-			&:before,
-			&:after
-				background-color: #fff
-.theme_dark
-	background-color: #3A3E44
-	.logo
-		a
-			color: #fff
-	.city-select
-		color: #fff
-		span
-			border-color: #fff
-	.header-nav
-		a
-			color: #fff
-		.shevron_mod
-			color: #fff
-	.m-btn-menu
-		span
-			background-color: #fff
-			&:before,
-			&:after
-				background-color: #fff
-@media (max-width: 1070px)
-	.logo
-		margin-right: 30px
-	.header-nav 
-		a
-			padding: 0 10px
-			&:nth-of-type(3)
-				&:before
-					left: 2px
-@media (max-width: 992px)
-	.header-nav
-		display: none
-	.m-btn-menu
-		display: block
+		color: #ffffff
+		&:hover
+			color: #ffffff
+		span 
+			border-bottom: 1px dotted #ffffff
+.bg-primary-blue
+	background-color: #0A2E65 !important
+.bg-primary
+	background-color: #0B3E8B !important
+.bg-dark
+	background-color: #3A3E44 !important
 
+
+@media (min-width: 992px)
+	.header-nav
+		.nav-link
+			font-size: em(16)
+			color: #616161
+			padding-top: 0
+			padding-bottom: 0
+			text-decoration: none
+			transition: color .15s cubic-bezier(.4,0,.21,1.1)
+			&:hover
+				color: #3e3e3e
+		.navbar-nav > .nav-item
+			&:first-child
+				.nav-link
+					padding-left: 0
+			&:last-child
+				.nav-link
+					padding-right: 0
+		.navbar-nav > .nav-item
+			&:nth-of-type(3)
+				.nav-link
+					position: relative
+					&::before
+						content: ''
+						width: 5px
+						height: 5px
+						background-color: #4AE700
+						display: block
+						border-radius: 50%
+						position: absolute
+						top: -2px
+						left: 4px
+@media (max-width: 1200px)
+	.logo
+		margin-right: 10px
+@media (max-width: 992px)
+	.header
+		height: auto
 @media (max-width: 575px)
 	.logo
 		margin-right: 15px

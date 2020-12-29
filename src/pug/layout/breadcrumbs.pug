@@ -1,19 +1,8 @@
-
-ul.breadcrumbs.d-flex.justify-content-start.align-items-center.flex-wrap
-	li.breadcrumbs-item.d-flex.align-items-center
-		a.breadcrumbs-link(href="#") 
-			+icon('house','house_mod')
-	li.breadcrumbs-item.d-flex.align-items-center
-		a.breadcrumbs-link(href="#") Сервисы
-	li.breadcrumbs-item.d-flex.align-items-center -
-	li.breadcrumbs-item.d-flex.align-items-center
-		a.breadcrumbs-link(href="#") Производители
-	li.breadcrumbs-item.d-flex.align-items-center -
-	li.breadcrumbs-item.d-flex.align-items-center
-		a.breadcrumbs-link(href="#") Samsung
-	li.breadcrumbs-item.d-flex.align-items-center -
-	li.breadcrumbs-item.d-flex.align-items-center
-		a.breadcrumbs-link(href="#") Производители
-	li.breadcrumbs-item.d-flex.align-items-center -
-	li.breadcrumbs-item.d-flex.align-items-center
-		a.breadcrumbs-link(href="#") Samsung
+nav(aria-label="breadcrumb")
+	ol.breadcrumb.d-flex.justify-content-start.align-items-center.flex-wrap
+		li.breadcrumb-item
+			a.breadcrumb-link(href="#")
+				+icon('house','house_mod')
+		li.breadcrumb-item
+			a.breadcrumb-link(href="#") Сервисы
+		li.breadcrumb-item.active Производители

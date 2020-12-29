@@ -1,25 +1,40 @@
 .city-select-body
-    max-width: 690px
-    padding: 27px 30px
-    background-color: #fff
-    border-radius: 9px
-#citySelectForm
-    margin-bottom: 23px
-    input[type="text"]
-        border: 1px solid #D8D8D8
-        background-color: #F9F9F9
+	.modal-content
+		padding: 27px 30px
+		border-radius: 9px
+	.close
+		position: absolute
+		right: -10px
+		top: -10px
+	input[type="text"]
+		border: 1px solid #D8D8D8
+		background-color: #F9F9F9
 .cities
-    margin: 0 -22px
-    overflow: hidden
-    &-col
-        padding: 0 10px
-    &-item 
-        font-size: em(14)
-        color: #5C8ACF
-        text-decoration: none
-        padding: 8px 12px
-        background-color: transparent
-        border-radius: 7px
-        transition: background-color .15s cubic-bezier(.4,0,.21,1.1)
-        &:hover
-            background-color: #EFF5F8
+	margin: 0 -22px
+	overflow: hidden
+	&-col
+		padding: 0 10px
+	&-item 
+		font-size: em(14)
+		color: #5C8ACF
+		text-decoration: none
+		padding: 8px 12px
+		background-color: transparent
+		border-radius: 7px
+		transition: background-color .15s cubic-bezier(.4,0,.21,1.1)
+		&:hover
+			background-color: #EFF5F8
+			text-decoration: none
+@media (min-width: 576px)
+	.city-select-body
+		.modal-dialog
+			max-width: 690px
+
+@media (max-width: 576px)
+	.city-select-body
+		.modal-content
+			padding: 30px 0 0 0
+		.close
+			position: absolute
+			right: 15px
+			top: -15px

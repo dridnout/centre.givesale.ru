@@ -3,22 +3,36 @@ include pgs.pug
 
 header.header
 	.container
-		.header-wrap.d-flex.justify-content-left.align-items-center.h-100
+		.header-wrap.d-flex.justify-content-left.align-items-center.h-100.navbar.navbar-expand-lg.navbar-light.px-0
 			.logo.flex-grow-1.flex-sm-grow-0.flex-md-grow-0.flex-lg-0.flex-xl-grow-0
 				a(href="#")
 					img(src="images/logo/logo.svg", alt="")
 					span Федеральный реестр<br>Сервисных центров
 
-			button.city-select
+			button.city-select(data-toggle="modal" data-target="#citiesModal")
 				+icon('map-point', 'map-point_mod')
 				span Москва
 
-			nav.header-nav.flex-grow-1
-				a(href="#") Ремонт
-					+icon('shevron','shevron_mod')
-				a(href="#") Услуги
-					+icon('shevron','shevron_mod')
-				a(href="#") Заявка на ремонт
-				a(href="#") Вопросы по ремонту
-			.m-btn-menu.flex-md-grow-1.flex-sm-grow-1
-				span
+			
+			button.navbar-toggler.p-0(type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
+				span.navbar-toggler-icon
+			nav.header-nav.collapse.navbar-collapse.flex-grow-1.p-0#navbarNav
+				ul.navbar-nav.ml-auto.pt-3.pt-lg-0
+					li.nav-item.dropdown
+						a.nav-link.dropdown-toggle(href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Ремонт
+						.dropdown-menu(aria-labelledby="navbarDropdownMenuLink")
+							a.dropdown-item(href="#") Ремонт 1
+							a.dropdown-item(href="#") Ремонт 2
+							a.dropdown-item(href="#") Ремонт 3
+							a.dropdown-item(href="#") Ремонт 4
+					li.nav-item.dropdown
+						a.nav-link.dropdown-toggle(href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") Услуги
+						.dropdown-menu(aria-labelledby="navbarDropdownMenuLink2")
+							a.dropdown-item(href="#") Услуги 1
+							a.dropdown-item(href="#") Услуги 2
+							a.dropdown-item(href="#") Услуги 3
+							a.dropdown-item(href="#") Услуги 4
+					li.nav-item.active
+						a.nav-link(href="#") Заявка на ремонт
+					li.nav-item.active
+						a.nav-link(href="#") Вопросы по ремонту

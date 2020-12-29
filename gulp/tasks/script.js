@@ -3,9 +3,10 @@ module.exports = function(){
 		return $.gulp.src([
 			'src/static/libs/jquery/dist/jquery.min.js',
 			'src/static/libs/pgs-panel/js/pgs-main.js',
+			'src/static/libs/bootstrap/js/bootstrap.min.js',
 			'src/static/libs/pgs-panel/js/jquery.mCustomScrollbar.concat.min.js',
 			// 'src/static/libs/swiper-master/package/js/swiper.min.js',
-			'src/static/libs/enquire/enquire.min.js',
+			// 'src/static/libs/enquire/enquire.min.js',
 			// 'src/static/libs/fancybox-master/dist/jquery.fancybox.min.js',
 			// 'src/static/libs/inputmask/jquery.inputmask.js',
 			// 'src/static/libs/rating/rater.js',

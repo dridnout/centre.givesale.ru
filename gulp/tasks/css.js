@@ -4,6 +4,8 @@ module.exports = function(){
 			'src/static/libs/normalize/normalize.css',
 			'src/static/libs/pgs-panel/css/pgs-main.css',
 			'src/static/libs/pgs-panel/css/jquery.mCustomScrollbar.css',
+			'src/static/libs/bootstrap/css/bootstrap.min.css',
+			// 'src/static/libs/bootstrap/css/bootstrap-grid.min.css'
 			// 'src/static/libs/bootstrap/bootstrap-grid.min.css'
 			// 'src/static/libs/swiper-master/package/css/swiper.min.css',
 			// 'src/static/libs/fancybox-master/dist/jquery.fancybox.min.css',

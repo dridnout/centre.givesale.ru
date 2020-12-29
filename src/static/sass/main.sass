@@ -36,12 +36,13 @@ button
 	touch-action: manipulation
 
 
-.d-flex
-	display: flex
+@media (min-width: 1200px)
+	.container, .container-lg, .container-md, .container-sm, .container-xl 
+		max-width: 1500px
 
 // main sass
 @import "grid"
-@import "display"
+// @import "display"
 // @import "grid-style"
 @import "sprite"
 @import "sprite-mod"
